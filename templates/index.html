@@ -1,0 +1,25 @@
+{% include "header.html" %}
+<div class="box" id="heading">
+  <h1>List of To-do Lists </h1>
+</div>
+
+<div class="box">
+  {% for list in lists: %}
+  <form class="" action="/delete-list" method="post">
+    <div class="item">
+      <button type="submit" class="btn btn-outline-danger delete-list-button" name="deleteList" class="delete-list-button" value="{{list.id}}">Delete</button>
+      <a href="{{ url_for('get_all_items', list_id=list.id) }}" class="list-name"> <h2>{{ list.name }}</h2></a>
+    </div>
+    <input type="hidden" name="listName" value="{{ listTitle }}">
+  </form>
+  {% endfor %}
+
+  <form class="item" action="/" method="post">
+    <input type="text" name="newList" placeholder="New List Name" autocomplete="off">
+    <button type="submit" name="list" value="{{ listTitle }}" class="btn btn-dark">New</button>
+  </form>
+
+</div>
+
+
+{% include "footer.html" %}
